@@ -4,7 +4,12 @@
 
 class WriteException : public std::exception
 {
-	
+public:
+    explicit WriteException(const char* msg)
+        :exception(msg)
+    {
+
+    }
 };
 
 class DeviceDriver
