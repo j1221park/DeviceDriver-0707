@@ -1,12 +1,21 @@
 #include "DeviceDriver.h"
+#include <windows.h>
 
 DeviceDriver::DeviceDriver(FlashMemoryDevice* hardware) : m_hardware(hardware)
 {}
 
 int DeviceDriver::read(long address)
 {
-    // TODO: implement this method properly
-    return (int)(m_hardware->read(address));
+    int result = (int)(m_hardware->read(address));
+    for (int i = 1; i < 5; i++)
+    {
+        Sleep(200);
+        if (result != (int)(m_hardware->read(address)))
+        {
+
+        }
+    }
+    return result;
 }
 
 void DeviceDriver::write(long address, int data)
