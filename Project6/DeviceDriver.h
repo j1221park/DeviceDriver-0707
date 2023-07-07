@@ -2,9 +2,14 @@
 #include "FlashMemoryDevice.h"
 #include <stdexcept>
 
-class ReadExexception : public std::exception
+class ReadException : public std::exception
 {
-	
+public:
+	explicit ReadException(char const* msg)
+		:exception(msg)
+	{
+		
+	}
 };
 
 class DeviceDriver

@@ -12,7 +12,7 @@ int DeviceDriver::read(long address)
         Sleep(200);
         if (result != (int)(m_hardware->read(address)))
         {
-            throw ReadExexception();
+            throw ReadException("read fail");
         }
     }
     return result;

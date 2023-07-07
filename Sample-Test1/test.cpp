@@ -20,3 +20,18 @@ TEST(TestFlashMemory, TestRead)
 	DeviceDriver dd(&mock);
 	dd.read(0xCC);
 }
+
+TEST(TestFlashMemory, TestReadFail)
+{
+	MockFlashMemory mock;
+	EXPECT_CALL(mock, read(0xCC))
+		.Times(5)
+		.WillOnce(Return('C'))
+		.WillOnce(Return('C'))
+		.WillOnce(Return('C'))
+		.WillOnce(Return('C'))
+		.WillOnce(Return('A'));
+
+	DeviceDriver dd(&mock);
+	EXPECT_THROW(dd.read(0xCC), ReadException);
+}
