@@ -1,5 +1,11 @@
 #pragma once
 #include "FlashMemoryDevice.h"
+#include <exception>
+
+class WriteException : public std::exception
+{
+	
+};
 
 class DeviceDriver
 {
