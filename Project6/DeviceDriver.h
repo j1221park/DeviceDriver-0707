@@ -12,6 +12,16 @@ public:
     }
 };
 
+class ReadException : public std::exception
+{
+public:
+	explicit ReadException(char const* msg)
+		:exception(msg)
+	{
+		
+	}
+};
+
 class DeviceDriver
 {
 public:
